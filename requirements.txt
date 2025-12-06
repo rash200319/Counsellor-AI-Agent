@@ -1,0 +1,5 @@
+llama_index
+transformers
+torch
+sentence_transformers
+openai
