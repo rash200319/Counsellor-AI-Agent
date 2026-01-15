@@ -1,10 +1,10 @@
-# 💬 Mental Health Assistant
+#  Mental Health Assistant
 
 A compassionate AI-powered mental health counselor built with LlamaIndex, Groq LLM, and ReAct Agent. This assistant provides mental health guidance, crisis support, and empathetic conversations.
 
 ---
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Features](#features)
 - [Prerequisites](#prerequisites)
@@ -20,7 +20,7 @@ A compassionate AI-powered mental health counselor built with LlamaIndex, Groq L
 
 ---
 
-## ✨ Features
+##  Features
 
 - **Compassionate AI Counselor**: Provides empathetic mental health guidance
 - **ReAct Agent**: Uses reasoning and action-based approach for better responses
@@ -33,7 +33,7 @@ A compassionate AI-powered mental health counselor built with LlamaIndex, Groq L
 
 ---
 
-## 🔧 Prerequisites
+##  Prerequisites
 
 - Python 3.8+
 - pip (Python package manager)
@@ -44,7 +44,7 @@ A compassionate AI-powered mental health counselor built with LlamaIndex, Groq L
 
 ---
 
-## 📥 Installation
+##  Installation
 
 1. **Clone or download the project**:
    ```bash
@@ -64,7 +64,7 @@ A compassionate AI-powered mental health counselor built with LlamaIndex, Groq L
 
 ---
 
-## ⚙️ Configuration
+##  Configuration
 
 ### API Keys
 
@@ -113,7 +113,7 @@ myagent/
 
 ---
 
-## 🚀 Usage
+##  Usage
 
 ### Running the Assistant
 
@@ -126,13 +126,13 @@ python myagent.py
 **Greeting:**
 ```
 You: hi
-Counselor: Hello! 👋 It's wonderful to meet you. How can I support you today?
+Counselor: Hello!  It's wonderful to meet you. How can I support you today?
 ```
 
 **Thank You:**
 ```
 You: thank you so much for your help
-Counselor: You're very welcome! 😊 I'm happy to help. Take care of yourself!
+Counselor: You're very welcome!  I'm happy to help. Take care of yourself!
 ```
 
 **Mental Health Question:**
@@ -144,7 +144,7 @@ Counselor: I understand how you feel. [Uses mental_health_tips tool to provide g
 **Crisis Detection:**
 ```
 You: I want to kill myself
-Counselor: 🚨 **Immediate Crisis Notice** 🚨
+Counselor:  **Immediate Crisis Notice** 
 In the US, you can call or text 988.
 ```
 
@@ -155,7 +155,7 @@ You: exit
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 myagent/
@@ -168,7 +168,7 @@ myagent/
 
 ---
 
-## 🔑 API Keys & Environment Variables
+##  API Keys & Environment Variables
 
 The assistant uses three main API services:
 
@@ -180,7 +180,7 @@ The assistant uses three main API services:
 
 ---
 
-## 🧠 How It Works
+##  How It Works
 
 ### 1. **Initialization**
 - LLM, embeddings, and node parser are configured
@@ -211,7 +211,7 @@ The assistant uses three main API services:
 
 ---
 
-## 🚨 Crisis Detection
+##  Crisis Detection
 
 The assistant monitors for crisis keywords:
 - "suicide"
@@ -260,7 +260,7 @@ I'm really concerned for your safety. Please call 988.
 
 ---
 
-## 🔧 Troubleshooting
+##  Troubleshooting
 
 ### Issue: "Index not found" error
 **Solution**: Ensure `data/` folder exists with document files
@@ -292,7 +292,7 @@ pip install --upgrade llama-index llama-index-core
 
 ---
 
-## 📚 Resources
+##  Resources
 
 - [LlamaIndex Documentation](https://docs.llamaindex.ai/)
 - [Groq API Docs](https://console.groq.com/docs)
@@ -302,13 +302,13 @@ pip install --upgrade llama-index llama-index-core
 
 ---
 
-## 📝 License
+##  License
 
 This project is for educational and personal use.
 
 ---
 
-## 💡 Notes
+##  Notes
 
 - Always use the assistant responsibly for mental health support
 - For serious mental health concerns, encourage users to seek professional help
