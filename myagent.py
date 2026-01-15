@@ -22,11 +22,11 @@ except ImportError:
     sys.exit(1)
 
 
-os.environ["MeM0_API_KEY"] = "m0-ymzlsDGGZpvPtu9arGk9yWgR3xcPcIC512ThJbOV"  # Replace with your actual API key
-os.environ["TAVILY_API_KEY"] = "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"
+os.environ["MeM0_API_KEY"] = "##"  # Replace with your actual API key
+os.environ["TAVILY_API_KEY"] = "##"
 
 MODEL_NAME = "llama-3.1-8b-instant"
-API_KEY = "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" # Replace with your actual API key
+API_KEY = "###" # Replace with your actual API key
 EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5" 
 KNOWLEDGE_BASE = "./data/"
 CHUNK_SIZE = 512
