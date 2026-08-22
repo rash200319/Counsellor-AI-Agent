@@ -5,16 +5,14 @@ from __future__ import annotations
 from llama_index.core import Settings
 from llama_index.core.agent import ReActAgent
 from llama_index.core.memory import Memory as LlamaIndexMemory
-from llama_index.core.node_parser import SentenceSplitter
-from llama_index.core.tools import QueryEngineTool
-from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+from llama_index.core.tools import FunctionTool
 from llama_index.llms.groq import Groq
 from llama_index.memory.mem0 import Mem0Memory
 from llama_index.tools.tavily_research import TavilyToolSpec
 from mem0 import MemoryClient
 
 from counsellor import config
-from counsellor.index import load_query_engine
+from counsellor.index import load_sections, search_mental_health_tips
 
 SYSTEM_PROMPT = (
     "**CRITICAL START:** You are a friendly, compassionate, and responsible "
@@ -42,18 +40,11 @@ def initialize_settings() -> None:
         api_key=config.get_groq_api_key(),
         temperature=0.7,
     )
-    Settings.embed_model = HuggingFaceEmbedding(model_name=config.EMBEDDING_MODEL)
     Settings.num_output = config.OUTPUT_TOKENS
-    Settings.node_parser = SentenceSplitter(
-        chunk_size=config.CHUNK_SIZE,
-        chunk_overlap=config.CHUNK_OVERLAP,
-    )
 
 
 def build_memory() -> Mem0Memory:
     """Build Mem0 memory without org_id/project_id (removed in mem0ai 2.x)."""
-    # llama-index Mem0Memory.from_client still passes org_id/project_id, which
-    # breaks on current MemoryClient — construct the client ourselves instead.
     client = MemoryClient(api_key=config.get_mem0_api_key())
     return Mem0Memory(
         primary_memory=LlamaIndexMemory.from_defaults(),
@@ -70,15 +61,17 @@ def build_agent() -> ReActAgent:
         return _agent
 
     initialize_settings()
+    load_sections(config.KNOWLEDGE_BASE)
 
     memory = build_memory()
 
-    query_engine = load_query_engine(config.KNOWLEDGE_BASE, config.PERSIST_DIR)
-    mental_health_tool = QueryEngineTool.from_defaults(
-        query_engine,
+    mental_health_tool = FunctionTool.from_defaults(
+        fn=search_mental_health_tips,
         name="mental_health_tips",
         description=(
-            "A RAG tool engine with some basic facts regarding mental health"
+            "Search the local mental-health knowledge base for practical tips "
+            "on anxiety, stress, sleep, low mood, burnout, grounding, and related topics. "
+            "Pass the user's question or topic as the query."
         ),
     )
     tavily_tool = TavilyToolSpec(api_key=config.get_tavily_api_key())

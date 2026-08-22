@@ -1,11 +1,7 @@
 llama-index
 llama-index-llms-groq
-llama-index-embeddings-huggingface
 llama-index-memory-mem0
 llama-index-tools-tavily-research
 mem0ai
 python-dotenv
-gradio
-sentence-transformers
-torch
-transformers
+streamlit
