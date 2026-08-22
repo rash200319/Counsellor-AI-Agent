@@ -1,4 +1,4 @@
-You are a supportive mental health counseling assistant. 
+You are a supportive mental health counseling assistant.
 Follow these rules:
 1. Always be empathetic and validating.
 2. Never diagnose or prescribe medication.
@@ -84,26 +84,230 @@ For students and school leavers
 
 Being at school, college or university can bring particular worries or challenges. Here are some suggestions for managing as a student or school leaver:
 
-1. **Studying with others**  
+1. **Studying with others**
    It can be helpful to study with others to boost your motivation. Try organising online study groups with your friends or classmates where you discuss questions about assignments or share tips on studying from home, or watch vlogs for motivation.
 
-2. **Keep an eye out for free resources and qualifications**  
+2. **Keep an eye out for free resources and qualifications**
    If you were hoping to start an apprenticeship or enter the job market, you might face uncertainty about your future. Organisations such as The Skills Toolkit and Future Learn offer free online courses in various subjects if you fancy learning something new.
 
-3. **Help your teachers to help you**  
-   Be honest with your teachers about how you’re feeling and how they can help you learn better from home.  
-   - Suggest new resources or ways of communicating online that your teacher might not be aware of.  
-   - If your teacher doesn’t get back to you, find out who your course administrator is to use as a second point of contact.  
+3. **Help your teachers to help you**
+   Be honest with your teachers about how you’re feeling and how they can help you learn better from home.
+   - Suggest new resources or ways of communicating online that your teacher might not be aware of.
+   - If your teacher doesn’t get back to you, find out who your course administrator is to use as a second point of contact.
    - Keep a record of important communications with school staff, especially when discussing coursework, dissertation or deadlines.
 
-4. **Focus on what you can control and acknowledge what you can’t**  
-   These are uncertain times, and things like exam marks, university, job or apprenticeship offers, and what the world will look like in a few months can all add to feelings of anxiety.  
-   - Try a “Circle of Control” exercise, where you think about what’s stressing you out and write down the things you have no control over, the things you can influence, and the things you can control.  
+4. **Focus on what you can control and acknowledge what you can’t**
+   These are uncertain times, and things like exam marks, university, job or apprenticeship offers, and what the world will look like in a few months can all add to feelings of anxiety.
+   - Try a “Circle of Control” exercise, where you think about what’s stressing you out and write down the things you have no control over, the things you can influence, and the things you can control.
    - We feel more anxious when we focus on the things we can’t control and forget about the things we can.
 
-5. **Your productivity doesn’t determine your self-worth**  
+5. **Your productivity doesn’t determine your self-worth**
    Life is still far from easy for a lot of us. It may not be realistic to expect yourself to be as productive as you were before. If you find yourself feeling a bit unmotivated, or you haven’t got as much done in a day as you usually would, that’s okay. Focus on making a plan that feels as manageable for you as you are.
 
-6. **If you’re still isolated in student accommodation**  
+6. **If you’re still isolated in student accommodation**
    There is support available. Your university or the building manager of your private halls should have a procedure in place to make sure you have a way to receive food and medicines you need. Be sure to tell your tutor or student representative that you’re staying in your accommodation.
 
+---
+
+Managing anxiety in the moment
+
+Anxiety often feels like a racing mind, tight chest, restless body, or a sense that something bad will happen. You do not need a diagnosis to use calming skills. Small steps can reduce intensity enough to think more clearly.
+
+Try one of these when anxiety spikes:
+
+1. **Box breathing (4-4-4-4)**
+   Breathe in for 4 counts, hold for 4, breathe out for 4, hold for 4. Repeat for 1–3 minutes. Slowing the breath can signal safety to your nervous system.
+
+2. **5-4-3-2-1 grounding**
+   Name 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, and 1 you can taste (or one positive quality about yourself). This pulls attention back to the present.
+
+3. **Name it to tame it**
+   Quietly say: “This is anxiety. It feels intense, and it will pass.” Labeling the feeling can reduce panic about the panic.
+
+4. **Tiny action**
+   Drink water, wash your face with cool water, step outside for 2 minutes, or stretch your shoulders. Physical resets often help more than arguing with anxious thoughts.
+
+5. **Worry window**
+   If worries keep looping, set a 10–15 minute “worry time” later in the day. When a worry appears now, jot it down and return to it in that window. This reduces all-day rumination.
+
+If anxiety is frequent, intense, or stopping you from living your life, consider talking with a GP, counselor, or trusted adult. Support is a strength, not a failure.
+
+---
+
+Coping with stress and overwhelm
+
+Stress is your system’s response to pressure. Overwhelm happens when demands feel larger than your capacity. Break the problem into smaller pieces rather than trying to “feel better” all at once.
+
+Practical steps:
+
+- **Brain dump**: Write every task and worry on paper for 5 minutes without organizing. Then circle only 1–3 things that matter today.
+- **One next step**: Ask “What is the smallest useful action I can take in the next 10 minutes?” Do only that.
+- **Energy match**: Put harder tasks in your higher-energy part of the day; save easier tasks for low-energy times.
+- **Say no or postpone**: Protecting your bandwidth is not selfish. A short delay or polite decline can prevent burnout.
+- **Recovery blocks**: Schedule short breaks the way you schedule work — stretch, snack, brief walk, or quiet music.
+
+Remember: unfinished lists do not mean you failed. Capacity changes day to day.
+
+---
+
+Low mood and depression-like feelings (self-help, not diagnosis)
+
+Feeling down, flat, empty, or unmotivated can happen for many reasons. This section shares gentle self-help ideas. It is not a diagnosis and not a replacement for professional care.
+
+Helpful approaches:
+
+1. **Behavioral activation (tiny wins)**
+   When mood is low, motivation often follows action — not the other way around. Choose one small, doable activity (shower, short walk, reply to one message, make a simple meal) and complete it. Celebrate completion, not perfection.
+
+2. **Opposite action (gently)**
+   Depression often pushes toward isolation and inactivity. Opposite action means doing a little of what you feel least like doing, in a safe and kind way — for example messaging one trusted person or opening the curtains.
+
+3. **Structure without pressure**
+   Keep wake times, meals, and one outdoor moment roughly consistent. Structure can stabilize mood even when motivation is low.
+
+4. **Self-talk check**
+   Notice harsh inner criticism (“I’m useless”). Soften it to something a caring friend would say (“I’m struggling, and I’m still worthy of care”).
+
+5. **When to seek more help**
+   Reach out to a professional or crisis line if low mood lasts most days for weeks, you lose interest in almost everything, sleep/appetite change sharply, or you have thoughts of self-harm. In the US, call or text 988 for immediate support.
+
+---
+
+Better sleep for mental health
+
+Sleep and mood strongly affect each other. You do not need perfect sleep hygiene — aim for “good enough” consistency.
+
+Tips:
+
+- Keep a similar wake time most days (even after a rough night).
+- Dim screens and bright lights in the hour before bed when possible.
+- Avoid using bed only for scrolling or arguing with yourself; if you cannot sleep after about 20 minutes, get up, do something calm in low light, then return.
+- Cut back on caffeine later in the day if it disrupts you.
+- Wind-down ritual: same 10-minute sequence nightly (tea, stretch, journaling, quiet audio).
+- If nightmares or racing thoughts keep you up, try writing worries on paper before bed and telling yourself you will revisit them tomorrow.
+
+Chronic insomnia or suspected sleep disorders deserve professional advice.
+
+---
+
+Grounding and panic support
+
+During panic, the body may shake, heart race, or breath shorten. Panic is frightening but usually peaks and eases. Focus on safety and the present moment.
+
+- Sit or stand somewhere stable. Place both feet on the floor.
+- Breathe out longer than you breathe in (for example in for 4, out for 6).
+- Hold a cold object, splash cool water on wrists, or press feet into the ground.
+- Remind yourself: “I am safe right now. This feeling is temporary.”
+- Afterward, rest, hydrate, and avoid judging yourself for “overreacting.” Panic is a body alarm, not a character flaw.
+
+If panic attacks are frequent, a clinician can teach tailored coping skills.
+
+---
+
+Loneliness and connection
+
+Loneliness is the gap between the connection you want and the connection you have. You can feel lonely in a crowd. Rebuilding connection can start small.
+
+Ideas:
+
+- Send one low-pressure message: “Thinking of you — no need to reply fast.”
+- Join a structured activity (class, club, volunteer shift, online community with clear norms) where conversation has a built-in reason.
+- Combine parallel activity with company: study together, walk together, cook on a video call.
+- Quality over quantity: one safe relationship often helps more than many shallow ones.
+- If social anxiety blocks outreach, script a short message in advance and send it before overthinking grows.
+
+If loneliness is tied to grief, trauma, or depression, consider counseling support.
+
+---
+
+Work and burnout boundaries
+
+Burnout often shows up as exhaustion, cynicism, and reduced sense of accomplishment. Recovery needs rest plus boundaries, not only “trying harder.”
+
+Suggestions:
+
+- Define work hours and a shutdown ritual (close tabs, write tomorrow’s top 3, leave the desk).
+- Take real breaks away from screens when possible.
+- Clarify priorities with a manager or yourself: what is urgent vs important vs optional.
+- Use micro-recovery: 5-minute walks, stretch breaks, lunch away from the keyboard.
+- Notice early signs (irritability, sleep change, dread on Sunday night) and adjust load early.
+
+If workplace stress includes bullying or unsafe conditions, document events and seek HR, union, trusted mentor, or external support.
+
+---
+
+Self-compassion and tough inner critic
+
+Many people speak to themselves more harshly than they would speak to a friend. Self-compassion is not laziness — it is a skill linked to resilience.
+
+Practice:
+
+1. Mindfulness: “This is a moment of suffering.”
+2. Common humanity: “Other people struggle too; I am not alone in this.”
+3. Kindness: “May I be patient with myself while I learn.”
+
+Try writing a short note to yourself as if writing to a close friend who had your exact day.
+
+---
+
+Healthy thinking patterns (CBT-style tips, not therapy)
+
+Thoughts influence feelings, but thoughts are not always facts. A simple check:
+
+- What is the thought?
+- What evidence supports it? What evidence challenges it?
+- What would I tell a friend in the same situation?
+- What is a more balanced alternative? (Not forced positivity — just fairer and more accurate.)
+
+Example: “I always mess everything up” → “I made a mistake on this task. I’ve also completed other things well. I can fix the next step.”
+
+For ongoing distressing thought patterns, structured therapy (such as CBT with a qualified professional) can help more than self-help alone.
+
+---
+
+Emotional regulation basics
+
+Strong emotions are information, not emergencies (unless safety is at risk).
+
+A simple sequence:
+
+1. Pause and breathe.
+2. Name the emotion (sad, angry, ashamed, scared, lonely).
+3. Rate intensity from 0–10.
+4. Choose a coping tool that matches intensity (grounding for high; journaling or talking for medium; problem-solving for lower).
+5. Reassess after 10–20 minutes.
+
+Avoid coping that creates bigger problems later (for example, aggression, isolation for days, or substance misuse). If those patterns appear, seek professional support early.
+
+---
+
+Building a personal wellness toolkit
+
+Create a short list you can open on hard days. Include:
+
+- 2 body tools (walk, stretch, cold water, breathing)
+- 2 mind tools (grounding, journaling, music playlist)
+- 2 people tools (names you can text, helpline numbers)
+- 2 comfort tools (favorite show, warm drink, pet time, shower)
+
+Keep the list on your phone. In crisis moments, decision-making is harder — a ready toolkit reduces friction.
+
+---
+
+When to seek professional help
+
+Self-help tips are useful, but professional support is important when:
+
+- Symptoms last most days for two weeks or more
+- Daily functioning (work, school, hygiene, relationships) is clearly impaired
+- You use alcohol/drugs to cope more often
+- Trauma memories, flashbacks, or severe anxiety dominate your days
+- You have thoughts of self-harm, suicide, or that others would be better off without you
+
+In the US, call or text 988 for the Suicide & Crisis Lifeline. Elsewhere, contact local emergency services or a trusted crisis line. Talking to a GP, counselor, psychologist, or psychiatrist can be a turning point — you do not have to wait until things are “bad enough.”
+
+---
+
+Encouragement for the user of this assistant
+
+It is okay to ask for support in imperfect words. You do not need to be calm, clear, or “ready” before you deserve care. Start with one feeling, one stressor, or one question. Small steps count. This assistant can offer information and compassionate conversation, but it is not a licensed therapist and cannot replace professional care.

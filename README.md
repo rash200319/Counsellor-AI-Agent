@@ -1,320 +1,252 @@
-#  Mental Health Assistant
+# Mental Health Assistant
 
-A compassionate AI-powered mental health counselor built with LlamaIndex, Groq LLM, and ReAct Agent. This assistant provides mental health guidance, crisis support, and empathetic conversations.
+A compassionate AI-powered mental health counselor **demo** built with LlamaIndex, Groq, and a ReAct agent. Chat via CLI or a Gradio web UI. Uses RAG over a local knowledge base, optional Tavily web search, and Mem0 conversation memory.
 
----
-
-##  Table of Contents
-
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [API Keys & Environment Variables](#api-keys--environment-variables)
-- [How It Works](#how-it-works)
-- [Crisis Detection](#crisis-detection)
-- [Conversation Examples](#conversation-examples)
-- [Troubleshooting](#troubleshooting)
+**Educational / portfolio use only.** Not a licensed therapist. Not a substitute for professional mental health care. If you are in crisis, call or text **988** (US) or local emergency services.
 
 ---
 
-##  Features
+## Features
 
-- **Compassionate AI Counselor**: Provides empathetic mental health guidance
-- **ReAct Agent**: Uses reasoning and action-based approach for better responses
-- **RAG System**: Retrieves mental health facts from knowledge base
-- **Web Search**: Integrates Tavily for current mental health information
-- **Memory Management**: Mem0 integration for conversation context and memory
-- **Crisis Detection**: Identifies crisis keywords and provides immediate resources
-- **Greeting & Thank You Detection**: Smart conversation flow management
-- **Empathy Enforcement**: Ensures all responses include empathetic language
-
----
-
-##  Prerequisites
-
-- Python 3.8+
-- pip (Python package manager)
-- API Keys:
-  - Groq API Key
-  - Mem0 API Key
-  - Tavily API Key
+- Empathetic counselor-style replies (demo)
+- ReAct agent with reasoning + tools
+- RAG over `data/mental_health_tips.txt` (anxiety, stress, sleep, low mood, burnout, grounding, and more)
+- Web search via Tavily
+- Mem0 conversation memory (not cleared on startup)
+- Crisis keyword detection **before** the agent runs
+- Shared reply pipeline for CLI and Gradio
+- Hostable Gradio UI (Hugging Face Spaces, Railway, Render, etc.)
 
 ---
 
-##  Installation
+## Prerequisites
 
-1. **Clone or download the project**:
-   ```bash
-   cd c:\Users\user\OneDrive\Desktop\myagent
-   ```
-
-2. **Create a virtual environment** (optional but recommended):
-   ```bash
-   python -m venv venv
-   venv\Scripts\activate
-   ```
-
-3. **Install required packages**:
-   ```bash
-   pip install llama-index llama-index-core llama-index-embeddings-huggingface llama-index-memory-mem0 llama-index-llms-groq llama-index-tools-tavily
-   ```
+- Python 3.10+
+- API keys:
+  - [Groq](https://console.groq.com)
+  - [Mem0](https://mem0.ai)
+  - [Tavily](https://tavily.com)
 
 ---
 
-##  Configuration
+## Installation
 
-### API Keys
+```bash
+cd Counsellor-AI-Agent
+python -m venv venv
 
-Update the following in `myagent.py`:
+# Windows
+venv\Scripts\activate
 
-```python
-os.environ["MeM0_API_KEY"] = "your_mem0_api_key_here"
-os.environ["TAVILY_API_KEY"] = "your_tavily_api_key_here"
-API_KEY = "your_groq_api_key_here"
+# macOS / Linux
+# source venv/bin/activate
+
+pip install -r requirements.txt
 ```
 
-**Get API Keys:**
-- [Groq API](https://console.groq.com)
-- [Mem0 API](https://mem0.ai)
-- [Tavily API](https://tavily.com)
+---
 
-### Configuration Parameters
+## Configuration
 
-```python
-MODEL_NAME = "llama-3.1-8b-instant"      # Groq model to use
-EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"  # Embedding model
-KNOWLEDGE_BASE = "./data/"               # Path to knowledge base documents
-CHUNK_SIZE = 512                         # Size of text chunks
-CHUNK_OVERLAP = 20                       # Overlap between chunks
-OUTPUT_TOKENS = 512                      # Max output tokens
-PERSIST_DIR = "./storage"                # Directory to persist index
+1. Copy the example env file and fill in keys:
+
+```bash
+# Windows
+copy .env.example .env
+
+# macOS / Linux
+# cp .env.example .env
 ```
 
-### Knowledge Base Setup
-
-1. Create a `data/` folder in the project directory
-2. Add `.txt`, `.pdf`, or other document files with mental health information
-3. The system will automatically index these documents on first run
+2. Edit `.env`:
 
 ```
-myagent/
+GROQ_API_KEY=your_groq_api_key
+MEM0_API_KEY=your_mem0_api_key
+TAVILY_API_KEY=your_tavily_api_key
+```
+
+Optional:
+
+| Variable | Purpose | Default |
+| --- | --- | --- |
+| `GROQ_MODEL` | Groq model id | `openai/gpt-oss-20b` |
+| `COUNSELLOR_USER_ID` | Mem0 user partition | `1` |
+| `PORT` | Gradio listen port | `7860` |
+
+Never commit `.env` (it is gitignored).
+
+### Other settings
+
+Defined in `counsellor/config.py`:
+
+| Setting | Default |
+| --- | --- |
+| Model | `openai/gpt-oss-20b` (override with `GROQ_MODEL`) |
+| Embedding | `BAAI/bge-small-en-v1.5` |
+| Knowledge base | `./data/` |
+| Persist dir | `./storage/` |
+| Chunk size / overlap | 512 / 20 |
+
+### Knowledge base
+
+Primary source: [`data/mental_health_tips.txt`](data/mental_health_tips.txt). Topics include:
+
+- Everyday wellbeing (routine, movement, social connection, media limits)
+- Anxiety, grounding, and panic support
+- Stress, overwhelm, and low mood (self-help only — not diagnosis)
+- Sleep, loneliness, work/burnout boundaries
+- Self-compassion, CBT-style thought checks, wellness toolkit
+- When to seek professional help / crisis resources
+
+Add more `.txt` / `.pdf` files under `data/` as needed. On first run the index is built under `storage/`.
+
+If you change documents after an index already exists, delete `storage/` so it rebuilds:
+
+```bash
+# Windows PowerShell
+Remove-Item -Recurse -Force .\storage\*
+```
+
+```
+Counsellor-AI-Agent/
+├── app.py                 # Gradio UI (host entrypoint)
+├── myagent.py             # CLI
+├── counsellor/            # shared library
 ├── data/
-│   ├── mental_health_tips.txt
-│   ├── anxiety_guide.txt
-│   └── depression_resources.txt
-├── storage/              # Auto-generated index storage
-├── myagent.py
-├── README.md
-└── .gitignore
+│   └── mental_health_tips.txt
+├── storage/               # auto-generated (do not commit secrets here)
+├── .env.example
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
-##  Usage
+## Usage
 
-### Running the Assistant
+### CLI
 
 ```bash
 python myagent.py
 ```
 
-### Example Conversations
+Type `exit` or `quit` to leave.
 
-**Greeting:**
-```
-You: hi
-Counselor: Hello!  It's wonderful to meet you. How can I support you today?
-```
+### Gradio UI (local)
 
-**Thank You:**
-```
-You: thank you so much for your help
-Counselor: You're very welcome!  I'm happy to help. Take care of yourself!
+```bash
+python app.py
 ```
 
-**Mental Health Question:**
-```
-You: How can I manage anxiety?
-Counselor: I understand how you feel. [Uses mental_health_tips tool to provide guidance]
-```
-
-**Crisis Detection:**
-```
-You: I want to kill myself
-Counselor:  **Immediate Crisis Notice** 
-In the US, you can call or text 988.
-```
-
-**Exit:**
-```
-You: exit
-```
+Open the URL Gradio prints (usually `http://127.0.0.1:7860`).
 
 ---
 
-##  Project Structure
+## Hosting
 
-```
-myagent/
-├── myagent.py              # Main application file
-├── README.md               # This file
-├── .gitignore              # Git ignore rules
-├── data/                   # Knowledge base documents (create this)
-└── storage/                # Persisted index (auto-generated)
-```
+Yes — you can host the Gradio app. Easiest path for this project: **Hugging Face Spaces**.
 
----
+### Option A — Hugging Face Spaces (recommended)
 
-##  API Keys & Environment Variables
+1. Create a Space → SDK **Gradio** → Python 3.10+.
+2. Upload / push this repo (`app.py`, `counsellor/`, `data/`, `requirements.txt`, etc.).
+3. In Space **Settings → Variables and secrets**, add:
+   - `GROQ_API_KEY`
+   - `MEM0_API_KEY`
+   - `TAVILY_API_KEY`
+   - optional: `GROQ_MODEL`, `COUNSELLOR_USER_ID`
+4. Space builds with `requirements.txt` and runs `app.py`.
+5. First boot may be slow (downloads the embedding model). Prefer a Space with enough RAM/CPU (CPU basic can be tight with `torch`).
 
-The assistant uses three main API services:
+`app.py` already binds `0.0.0.0` and respects `PORT`, which Spaces/Railway need.
 
-| Service | Purpose | Where to Get | Environment Variable |
-|---------|---------|--------------|----------------------|
-| Groq | LLM Model | console.groq.com | `API_KEY` |
-| Mem0 | Memory Management | mem0.ai | `MeM0_API_KEY` |
-| Tavily | Web Search | tavily.com | `TAVILY_API_KEY` |
+### Option B — Railway / Render / Fly.io
 
----
+1. Deploy from GitHub as a Python web service.
+2. Start command: `python app.py`
+3. Set the same API keys as environment variables.
+4. Expose the port Gradio uses (`PORT`, default `7860`).
 
-##  How It Works
+Expect a larger slug/image because of `torch` + sentence-transformers.
 
-### 1. **Initialization**
-- LLM, embeddings, and node parser are configured
-- Knowledge base is indexed (or loaded from cache)
-- Mem0 memory is initialized for conversation context
-- ReAct Agent is created with mental health and search tools
+### Option C — Temporary public link (no permanent host)
 
-### 2. **User Input Processing**
-- **Greeting Detection**: If user says "hi", "hello", etc., responds with greeting
-- **Thank You Detection**: If user says "thanks", responds with closing message
-- **Regular Query**: Processes through ReAct Agent with tools
-  - Retrieves mental health information from RAG
-  - Can perform web searches if needed
-  - Applies safety guidelines and empathy checks
+While running locally:
 
-### 3. **Response Generation**
-- Agent reasons about user input
-- Uses appropriate tools (mental_health_tips or web search)
-- Applies guidelines:
-  - Crisis detection
-  - Empathy enforcement
-  - Safety checks
-
-### 4. **Memory Management**
-- Mem0 stores conversation history
-- Allows the assistant to remember context across sessions
-- Improves personalization of responses
-
----
-
-##  Crisis Detection
-
-The assistant monitors for crisis keywords:
-- "suicide"
-- "kill myself"
-- "end my life"
-
-When detected, it immediately:
-1. Stops normal processing
-2. Shows crisis notice
-3. Provides the 988 hotline (US)
-4. Encourages seeking immediate help
-
-**Crisis Keywords** (in `myagent.py`):
 ```python
-crisis_keywords = ["suicide","kill myself","end my life"]
+# in a quick test you can pass share=True to chat.launch(...)
 ```
+
+Gradio can print a temporary `*.gradio.live` URL. Fine for demos; not for a permanent portfolio link.
+
+### Hosting caveats
+
+- Keep API keys in platform secrets — never in the repo.
+- This is a **demo**, not a clinical product. Show the disclaimer prominently.
+- Mem0 memory is keyed by `COUNSELLOR_USER_ID` (default shared `1`). Multi-user prod would need per-user ids and auth (out of scope).
+- Free tiers may sleep, rate-limit Groq/Mem0/Tavily, or struggle with cold starts + embeddings.
 
 ---
 
-## 💬 Conversation Examples
+## How it works
 
-### Example 1: Greeting
-```
-You: hello
-Counselor: Hello! 👋 It's wonderful to meet you. How can I support you today?
-```
+1. Load API keys from `.env` (or host secrets) and initialize LLM, embeddings, Mem0, and tools.
+2. For each user message:
+   - **Crisis keywords** → immediate 988 / crisis notice (agent skipped)
+   - **Greeting / thanks** → short canned reply
+   - Otherwise → ReAct agent (RAG + optional Tavily), then a light empathy fallback
+3. Mem0 keeps conversation context; it is **not** reset on startup.
 
-### Example 2: Mental Health Advice
-```
-You: I'm feeling stressed at work
-Counselor: I understand how you feel. [provides empathetic response with tips from knowledge base]
-```
+---
 
-### Example 3: Thanks
-```
-You: thanks for your help!
-Counselor: My pleasure! 💙 Remember, I'm always here if you need to talk.
-```
+## Crisis detection
 
-### Example 4: Crisis
+Keywords include (among others): `suicide`, `kill myself`, `end my life`, `hurt myself`, `self-harm`, `want to die`.
+
+When matched, the app returns crisis resources immediately and does not call the agent.
+
+**Example**
+
 ```
 You: I want to hurt myself
-Counselor: 🚨 **Immediate Crisis Notice** 🚨
-I'm really concerned for your safety. Please call 988.
+Counselor: **Immediate Crisis Notice**
+...
+**In the US, you can call or text 988.**
 ```
+
+This is a simple keyword filter for a demo — not a clinical safety system.
 
 ---
 
-##  Troubleshooting
+## Troubleshooting
 
-### Issue: "Index not found" error
-**Solution**: Ensure `data/` folder exists with document files
+**Model not found (404)**  
+`llama-3.1-8b-instant` was retired on Groq. Default is `openai/gpt-oss-20b`. Override with `GROQ_MODEL`.
+
+**Mem0 `org_id` TypeError**  
+Current `mem0ai` no longer accepts `org_id`. This project builds `MemoryClient` without those args in `counsellor/agent.py`.
+
+**Missing API key**  
+Copy `.env.example` to `.env` (or set host secrets).
+
+**Stale RAG answers after editing `data/`**  
+Delete `storage/` and restart so the index rebuilds.
+
+**Import errors**  
 ```bash
-mkdir data
-# Add .txt or .pdf files to data/
+pip install -r requirements.txt
 ```
 
-### Issue: API Key errors
-**Solution**: Verify all API keys are correctly set in `myagent.py`
-```python
-print(os.environ.get("MeM0_API_KEY"))  # Should not be None
-```
-
-### Issue: Module import errors
-**Solution**: Reinstall packages
-```bash
-pip install --upgrade llama-index llama-index-core
-```
-
-### Issue: Slow responses
-**Solution**: 
-- Reduce `CHUNK_SIZE` for faster retrieval
-- Check internet connection for web search
-- Verify API rate limits
-
-### Issue: Agent not responding to greetings
-**Solution**: The greeting detection is built into the `main_chat_loop()`. Ensure you're running the latest version of `myagent.py`.
+**Slow first run / Space build**  
+HuggingFace embedding model and PyTorch download on first use.
 
 ---
 
-##  Resources
+## Notes
 
-- [LlamaIndex Documentation](https://docs.llamaindex.ai/)
-- [Groq API Docs](https://console.groq.com/docs)
-- [Mem0 Documentation](https://docs.mem0.ai/)
-- [Tavily Search API](https://tavily.com/docs)
-- [Mental Health Crisis Hotlines](https://988lifeline.org/)
+- Use responsibly; encourage professional help for serious concerns.
+- Crisis resources should always be offered when someone may be in danger.
+- For educational and personal portfolio use.
 
----
-
-##  License
-
-This project is for educational and personal use.
-
----
-
-##  Notes
-
-- Always use the assistant responsibly for mental health support
-- For serious mental health concerns, encourage users to seek professional help
-- The assistant is NOT a replacement for professional mental health care
-- Crisis resources should always be provided when needed
-
----
-
-**Last Updated**: December 6, 2025
+**Last updated:** August 22, 2026
