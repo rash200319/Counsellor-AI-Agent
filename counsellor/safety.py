@@ -127,10 +127,4 @@ def apply_empathy_fallback(generated_response: str) -> str:
         or "i'm having trouble connecting" in text
     )
     shows_empathy = any(phrase in text for phrase in EMPATHY_PHRASES)
-    if not shows_empathy and not is_failure:
-        return (
-            "I want you to know that I care about your well-being. "
-            + generated_response
-        )
-
     return generated_response
