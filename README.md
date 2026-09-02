@@ -14,6 +14,8 @@ A compassionate AI-powered mental health counselor **demo** built with LlamaInde
 - Web search via Tavily
 - Mem0 conversation memory (not cleared on startup)
 - Crisis keyword detection **before** the agent runs
+- Counselling-only scope guardrail for unrelated requests
+- Prompt-injection and secret/code disclosure protection
 - Shared reply pipeline for CLI and Streamlit
 
 ---
@@ -183,9 +185,24 @@ Free **Static** Spaces cannot run Python. Gradio Spaces may require paid access 
 1. Load API keys and initialize Groq LLM, Mem0, and tools (no local embedding model).
 2. For each user message:
    - **Crisis keywords** → immediate 988 / crisis notice (agent skipped)
+   - **Prompt/code/secret requests** → privacy refusal (agent skipped)
+   - **Clear unrelated requests** → scope refusal (agent skipped)
    - **Greeting / thanks** → short canned reply
    - Otherwise → ReAct agent (`mental_health_tips` keyword search + optional Tavily), then light empathy fallback
 3. Mem0 keeps conversation context; it is **not** reset on startup.
+
+## Guardrails
+
+The shared `counsellor.chat.get_reply` pipeline checks every message before it
+reaches the LLM. It refuses obvious programming and general-purpose requests,
+as well as requests for system/developer prompts, source code, environment
+variables, credentials, API keys, or hidden tool/memory details. The agent's
+system prompt repeats these restrictions, and responses are checked for common
+prompt/secret leakage markers before being shown to the user.
+
+These are application guardrails, not a security boundary: keep `.env` out of
+version control, use platform secret storage, and never place real credentials
+in prompts, logs, or the knowledge base.
 
 ---
 

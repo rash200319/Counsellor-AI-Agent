@@ -5,7 +5,16 @@ from __future__ import annotations
 import random
 
 from counsellor.agent import build_agent
-from counsellor.safety import apply_empathy_fallback, crisis_message, is_crisis
+from counsellor.safety import (
+    apply_empathy_fallback,
+    contains_sensitive_output,
+    crisis_message,
+    is_crisis,
+    is_out_of_scope_request,
+    is_sensitive_request,
+    privacy_message,
+    scope_message,
+)
 
 GREETING_KEYWORDS = [
     "hi",
@@ -77,6 +86,14 @@ async def get_reply(user_input: str) -> str:
     if is_crisis(user_input):
         return crisis_message()
 
+    # Keep private instructions and implementation details out of the agent
+    # context entirely. This also handles prompt-injection phrasing.
+    if is_sensitive_request(user_input):
+        return privacy_message()
+
+    if is_out_of_scope_request(user_input):
+        return scope_message()
+
     user_lower = user_input.lower().strip()
     if _is_greeting(user_lower):
         return GREETING_RESPONSE
@@ -86,4 +103,6 @@ async def get_reply(user_input: str) -> str:
     agent = build_agent()
     result = await agent.run(user_input)
     raw_text = _extract_text(result.response)
+    if contains_sensitive_output(raw_text):
+        return privacy_message()
     return apply_empathy_fallback(raw_text)
